@@ -47,9 +47,9 @@ I use the ggplot package to make a histogram.  I chose a binwidth of 1000.
 
 ```{r HistogramStepsPerDay, fig.width=7, fig.height=6   }
 m <- ggplot(sum.by.day, aes(x=sum1))
-m + geom_histogram(origin=0, binwidth=1000, fill='gray', color='black') + ylab("Count (days)") + xlab("Total steps per day")+ 
+m + geom_histogram(origin=0, binwidth=1000, fill='cyan', color='black') + ylab("Count (days)") + xlab("Total steps per day")+ 
       theme_bw() +  scale_y_continuous(breaks=seq(0,10,2))
-ggsave(filename="histogram1.png", width=6, height=4, units="in", dpi=300)
+
 ```
 
 
@@ -102,7 +102,7 @@ maximum number of steps.
 
 ```{r MeanStepsInterval2, fig.width=7, fig.height=6 , dev="png"  }
 plot(mean1 ~ interval, data=sum.by.interval, type="l", ylab="Total Steps", xlab="5 minute interval")
-abline(v=sum.by.interval$interval[which.max(sum.by.interval$mean1)], col="red", lty=3, lwd=1)
+abline(v=sum.by.interval$interval[which.max(sum.by.interval$mean1)], col="red", lty=1, lwd=2)
 
 ```
 
@@ -180,7 +180,7 @@ Using the ggplot, a histogram of steps per day after imputation is displayed.  E
 ```{r HistogramStepsPerDay2, fig.width=7, fig.height=6  , fig.cap="Histogram of total steps per day with imputation." }
 
 m <- ggplot(sum.by.day2, aes(x=sum1))
-m + geom_histogram(origin=0, binwidth=1000, fill='gray', color='black') + ylab("Count (days)") + xlab("Total steps per day")+ 
+m + geom_histogram(origin=0, binwidth=1000, fill='cyan', color='black') + ylab("Count (days)") + xlab("Total steps per day")+ 
       theme_bw() +  scale_y_continuous(breaks=seq(0,10,2)) + 
       ggtitle("Missing steps imputed") +
            theme(plot.title = element_text(lineheight=.6, face="bold", size=18)) +
@@ -189,12 +189,14 @@ m + geom_histogram(origin=0, binwidth=1000, fill='gray', color='black') + ylab("
             axis.title.y = element_text(face="bold", size=20),
             axis.text.y  = element_text(face="bold", angle=0, vjust=0.5, size=14))
 
-ggsave(filename="histogram2_imputedNAs.png", width=6, height=4, units="in", dpi=300)
-
-# Good references
-# ref for title:  http://www.cookbook-r.com/Graphs/Titles_(ggplot2)/ 
-# ref for axis titles:  http://www.cookbook-r.com/Graphs/Axes_(ggplot2)/ 
 ``` 
+
+
+Good references
+============================
+* ref for title:  http://www.cookbook-r.com/Graphs/Titles_(ggplot2)/ 
+* ref for axis titles:  http://www.cookbook-r.com/Graphs/Axes_(ggplot2)/ 
+
  
 
  Are there differences in activity patterns between weekdays and weekends?

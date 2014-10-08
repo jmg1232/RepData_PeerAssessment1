@@ -77,17 +77,11 @@ I use the ggplot package to make a histogram.  I chose a binwidth of 1000.
 
 ```r
 m <- ggplot(sum.by.day, aes(x=sum1))
-m + geom_histogram(origin=0, binwidth=1000, fill='gray', color='black') + ylab("Count (days)") + xlab("Total steps per day")+ 
+m + geom_histogram(origin=0, binwidth=1000, fill='cyan', color='black') + ylab("Count (days)") + xlab("Total steps per day")+ 
       theme_bw() +  scale_y_continuous(breaks=seq(0,10,2))
 ```
 
-![plot of chunk HistogramStepsPerDay](figure/HistogramStepsPerDay1.png) 
-
-```r
-ggsave(filename="histogram1.png", width=6, height=4, units="in", dpi=300)
-```
-
-![plot of chunk HistogramStepsPerDay](figure/HistogramStepsPerDay2.png) 
+![plot of chunk HistogramStepsPerDay](figure/HistogramStepsPerDay.png) 
 
 
 Calculate and report the mean and median total number of steps taken per day
@@ -170,7 +164,7 @@ maximum number of steps.
 
 ```r
 plot(mean1 ~ interval, data=sum.by.interval, type="l", ylab="Total Steps", xlab="5 minute interval")
-abline(v=sum.by.interval$interval[which.max(sum.by.interval$mean1)], col="red", lty=3, lwd=1)
+abline(v=sum.by.interval$interval[which.max(sum.by.interval$mean1)], col="red", lty=1, lwd=2)
 ```
 
 ![plot of chunk MeanStepsInterval2](figure/MeanStepsInterval2.png) 
@@ -290,7 +284,7 @@ Using the ggplot, a histogram of steps per day after imputation is displayed.  E
 
 ```r
 m <- ggplot(sum.by.day2, aes(x=sum1))
-m + geom_histogram(origin=0, binwidth=1000, fill='gray', color='black') + ylab("Count (days)") + xlab("Total steps per day")+ 
+m + geom_histogram(origin=0, binwidth=1000, fill='cyan', color='black') + ylab("Count (days)") + xlab("Total steps per day")+ 
       theme_bw() +  scale_y_continuous(breaks=seq(0,10,2)) + 
       ggtitle("Missing steps imputed") +
            theme(plot.title = element_text(lineheight=.6, face="bold", size=18)) +
@@ -300,19 +294,14 @@ m + geom_histogram(origin=0, binwidth=1000, fill='gray', color='black') + ylab("
             axis.text.y  = element_text(face="bold", angle=0, vjust=0.5, size=14))
 ```
 
-![Histogram of total steps per day with imputation.](figure/HistogramStepsPerDay21.png) 
+![Histogram of total steps per day with imputation.](figure/HistogramStepsPerDay2.png) 
 
-```r
-ggsave(filename="histogram2_imputedNAs.png", width=6, height=4, units="in", dpi=300)
-```
 
-![Histogram of total steps per day with imputation.](figure/HistogramStepsPerDay22.png) 
+Good references
+============================
+* ref for title:  http://www.cookbook-r.com/Graphs/Titles_(ggplot2)/ 
+* ref for axis titles:  http://www.cookbook-r.com/Graphs/Axes_(ggplot2)/ 
 
-```r
-# Good references
-# ref for title:  http://www.cookbook-r.com/Graphs/Titles_(ggplot2)/ 
-# ref for axis titles:  http://www.cookbook-r.com/Graphs/Axes_(ggplot2)/ 
-```
  
 
  Are there differences in activity patterns between weekdays and weekends?
